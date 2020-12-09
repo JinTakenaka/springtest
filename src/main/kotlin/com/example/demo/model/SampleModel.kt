@@ -1,3 +1,3 @@
 package com.example.demo.model
 
-data class SampleModel(var message: String, var id: Int)
+class SampleModel(var id: Int, var helloWorld: String)
