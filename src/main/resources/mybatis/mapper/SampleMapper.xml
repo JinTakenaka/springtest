@@ -12,4 +12,35 @@
             hello_worlds
     </select>
 
+    <select id="insert">
+        INSERT INTO
+            hello_worlds (hello_world)
+        VALUES (
+            #{hello_world}
+        )
+    </select>
+
+    <select id="update">
+        UPDATE
+            hello_worlds
+        SET
+            hello_world=#{hello_world}
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="delete">
+        DELETE
+        FROM
+            hello_worlds
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="deleteAll">
+        DELETE
+        FROM
+            hello_worlds
+    </select>
+
 </mapper>
