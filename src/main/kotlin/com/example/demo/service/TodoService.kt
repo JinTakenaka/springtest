@@ -1,10 +1,8 @@
 package com.example.demo.service
 
-import com.example.demo.mapper.TodoMapper
-import com.example.demo.model.SampleModel
+import com.example.demo.infrastructure.mapper.TodoMapper
 import com.example.demo.model.TodoModel
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class TodoService(private val mapper: TodoMapper) {

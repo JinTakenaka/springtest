@@ -1,7 +1,7 @@
 package com.example.demo.controller
 
+import com.example.demo.controller.dto.InsertRequest
 import com.example.demo.model.SampleModel
-import com.example.demo.model.insertRequest
 import com.example.demo.service.SampleService
 import org.springframework.web.bind.annotation.*
 
@@ -25,7 +25,7 @@ class SampleController(
 //    fun insertData(@RequestBody hello_world:String): List<SampleModel>  {
 //    fun insertData(@RequestBody model: SampleModel): List<SampleModel>  {
 
-    fun insertData(@RequestBody body: insertRequest): List<SampleModel>  {
+    fun insertData(@RequestBody body: InsertRequest): List<SampleModel>  {
         println("WWW2")
         sampleService.insert(body.helloWorld)
 //        sampleService.insert(hello_world)
