@@ -1,6 +1,7 @@
 package com.example.demo.controller
 
 import com.example.demo.model.SampleModel
+import com.example.demo.model.insertRequest
 import com.example.demo.service.SampleService
 import org.springframework.web.bind.annotation.*
 
@@ -21,11 +22,13 @@ class SampleController(
     @PostMapping("/insert")
 //    @PostMapping("/insert/{hello_world}")
 //    fun insertData(@PathVariable hello_world:String): List<SampleModel>  {
-    fun insertData(@RequestBody hello_world:String): List<SampleModel>  {
+//    fun insertData(@RequestBody hello_world:String): List<SampleModel>  {
 //    fun insertData(@RequestBody model: SampleModel): List<SampleModel>  {
+
+    fun insertData(@RequestBody body: insertRequest): List<SampleModel>  {
         println("WWW2")
-//        sampleService.insert(model)
-        sampleService.insert(hello_world)
+        sampleService.insert(body.helloWorld)
+//        sampleService.insert(hello_world)
         return sampleService.find()
     }
 
