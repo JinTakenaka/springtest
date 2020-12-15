@@ -19,13 +19,9 @@ class TodoController(
     }
 
     @PostMapping("/insert")
-//    @PostMapping("/insert/{hello_world}")
-//    fun insertData(@PathVariable hello_world:String): List<SampleModel>  {
     fun insertData(@RequestBody body:TodoModel): List<TodoModel>  {
-//    fun insertData(@RequestBody model: SampleModel): List<SampleModel>  {
         println("WWW2")
         todoService.insert(body.title)
-//        TodoService.insert(hello_world)
         return todoService.find()
     }
 

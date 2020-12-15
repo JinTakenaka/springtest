@@ -1,6 +1,6 @@
 package com.example.demo.controller
 
-import com.example.demo.controller.dto.InsertRequest
+import com.example.demo.controller.dto.SampleInsertRequest
 import com.example.demo.model.SampleModel
 import com.example.demo.service.SampleService
 import org.springframework.web.bind.annotation.*
@@ -20,15 +20,9 @@ class SampleController(
     }
 
     @PostMapping("/insert")
-//    @PostMapping("/insert/{hello_world}")
-//    fun insertData(@PathVariable hello_world:String): List<SampleModel>  {
-//    fun insertData(@RequestBody hello_world:String): List<SampleModel>  {
-//    fun insertData(@RequestBody model: SampleModel): List<SampleModel>  {
-
-    fun insertData(@RequestBody body: InsertRequest): List<SampleModel>  {
+    fun insertData(@RequestBody body: SampleInsertRequest): List<SampleModel>  {
         println("WWW2")
         sampleService.insert(body.helloWorld)
-//        sampleService.insert(hello_world)
         return sampleService.find()
     }
 
