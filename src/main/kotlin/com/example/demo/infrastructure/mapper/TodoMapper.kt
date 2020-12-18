@@ -3,20 +3,24 @@ package com.example.demo.infrastructure.mapper
 import org.apache.ibatis.annotations.Mapper
 import com.example.demo.model.TodoModel
 import org.springframework.stereotype.Component
+import java.util.*
+import java.util.concurrent.atomic.AtomicReference
 
 @Mapper
 @Component
 interface TodoMapper {
-    // 抽象メソッドで定義する
+
+    //todoDB
     fun find(): List<TodoModel>
-
-    //@Options(useGeneratedKeys = true, keyProperty = "id")
-    fun insert(title:String)
-//    fun insert(model: SampleModel)
-
-    fun update(id: Int, hello_world: String)
-
-    fun delete(id:Int)
-
+    fun getTodoById(id:String): TodoModel
+    fun insert(id:String, title:String, categoryId:Int, detail:String, statusId:Int, deadline: Date, remarks:String): String
+    fun update(id:Char, title:String)
+    fun delete(id:Char)
     fun deleteAll()
+
+    //todo_category
+    fun getCategoryIdByCategory(category: String):Int
+
+    //todo_status
+    fun getStatusIdByStatus(status: String):Int
 }

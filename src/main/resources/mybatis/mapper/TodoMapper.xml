@@ -12,11 +12,20 @@
             todo
     </select>
 
-    <select id="insert">
-        INSERT INTO
-            todo (title)
+    <select id="getTodoById" resultType="TodoModel">
+        SELECT
+            *
+        FROM
+            todo
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="insert" resultType="String">
+        INSERT IGNORE INTO
+            todo (id, title, category_id, detail, status_id, deadline, remarks)
         VALUES (
-            #{title}
+            #{id}, #{title}, #{categoryId}, #{detail}, #{statusId}, #{deadline}, #{remarks}
         )
     </select>
 
@@ -41,6 +50,24 @@
         DELETE
         FROM
             todo
+    </select>
+
+    <select id="getCategoryIdByCategory" resultType="Int">
+        SELECT
+            category_id
+        FROM
+            todo_category
+        WHERE
+            category=#{category}
+    </select>
+
+    <select id="getStatusIdByStatus" resultType="Int">
+        SELECT
+            status_id
+        FROM
+            todo_status
+        WHERE
+            status=#{status}
     </select>
 
 </mapper>

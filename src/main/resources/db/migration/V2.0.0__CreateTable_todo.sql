@@ -1,5 +1,5 @@
 CREATE TABLE todo(
-    id VARCHAR(32) NOT NULL PRIMARY KEY,
+    id VARCHAR(36) NOT NULL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     category_id int NOT NULL,
     detail TEXT NOT NULL,
@@ -11,11 +11,11 @@ CREATE TABLE todo(
 );
 
 CREATE TABLE todo_category(
-    category_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    category_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, #0は使用不可
     category VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE todo_status(
-    status_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    status_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, #0は使用不可
     status VARCHAR(20) NOT NULL
 );

@@ -1,14 +1,14 @@
 package com.example.demo.model
 
-import javax.xml.crypto.Data
+import java.util.Date
 
 class TodoModel(
     var id: Char,
     var title: String,
-    var category_id: Int,
+    var categoryId: Int,
     var detail: String,
-    var status_id: Int,
-    var deadline: Data,
+    var statusId: Int,
+    var deadline: Date,
     var remarks: String
 )
 
