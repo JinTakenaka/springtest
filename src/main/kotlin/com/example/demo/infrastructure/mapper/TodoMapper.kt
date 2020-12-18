@@ -1,5 +1,6 @@
 package com.example.demo.infrastructure.mapper
 
+import com.example.demo.model.TodoListModel
 import org.apache.ibatis.annotations.Mapper
 import com.example.demo.model.TodoModel
 import org.springframework.stereotype.Component
@@ -14,6 +15,8 @@ interface TodoMapper {
     fun find(): List<TodoModel>
     fun getTodoById(id:String): TodoModel
     fun insert(id:String, title:String, categoryId:Int, detail:String, statusId:Int, deadline: Date, remarks:String): String
+    fun getTodoList(): List<TodoListModel>
+
     fun update(id:Char, title:String)
     fun delete(id:Char)
     fun deleteAll()

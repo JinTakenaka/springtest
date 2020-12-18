@@ -1,6 +1,7 @@
 package com.example.demo.service
 
 import com.example.demo.infrastructure.mapper.TodoMapper
+import com.example.demo.model.TodoListModel
 import com.example.demo.model.TodoModel
 import jdk.jfr.Category
 import org.apache.ibatis.jdbc.Null
@@ -20,6 +21,12 @@ class TodoService(private val mapper: TodoMapper) {
         }else false
         //return mapper.getTodoById(id)!=null
     }
+
+    fun getTodoById(id:String):TodoModel{
+        return mapper.getTodoById(id)
+    }
+
+    fun getTodoList():List<TodoListModel> = mapper.getTodoList()
 
     fun update(id:Char, hello_world:String) = mapper.update(id, hello_world)
     fun delete(id:Char) = mapper.delete(id)

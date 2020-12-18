@@ -22,11 +22,20 @@
     </select>
 
     <select id="insert" resultType="String">
-        INSERT IGNORE INTO
+        INSERT INTO
             todo (id, title, category_id, detail, status_id, deadline, remarks)
         VALUES (
             #{id}, #{title}, #{categoryId}, #{detail}, #{statusId}, #{deadline}, #{remarks}
         )
+    </select>
+
+    <select id="getTodoList" resultType="TodoListModel">
+        SELECT
+            id,
+            title,
+            deadline
+        FROM
+            todo
     </select>
 
     <select id="update">
@@ -51,6 +60,9 @@
         FROM
             todo
     </select>
+
+
+
 
     <select id="getCategoryIdByCategory" resultType="Int">
         SELECT
