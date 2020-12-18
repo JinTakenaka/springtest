@@ -48,10 +48,6 @@
             id=#{id}
     </select>
 
-
-
-
-
     <select id="delete">
         DELETE
         FROM
@@ -59,13 +55,6 @@
         WHERE
             id=#{id}
     </select>
-
-    <select id="deleteAll">
-        DELETE
-        FROM
-            todo
-    </select>
-
 
 
 
@@ -77,6 +66,8 @@
         WHERE
             category=#{category}
     </select>
+
+
 
     <select id="getStatusIdByStatus" resultType="Int">
         SELECT

@@ -12,6 +12,7 @@ import java.util.*
 class TodoService(private val mapper: TodoMapper) {
 
     fun find() : List<TodoModel> = mapper.find()
+
     fun insert(title:String, category:String, detail:String, deadline:Date, remarks:String): Boolean {
         val id:String = UUID.randomUUID().toString()
         return if (id!="" && title!="" && category!="" && detail!="") {
@@ -25,6 +26,7 @@ class TodoService(private val mapper: TodoMapper) {
     fun getTodoById(id:String):TodoModel{
         return mapper.getTodoById(id)
     }
+
     fun getTodoList():List<TodoListModel> = mapper.getTodoList()
 
     fun update(id:String, status:String):Boolean{
@@ -39,6 +41,11 @@ class TodoService(private val mapper: TodoMapper) {
         return true
     }
 
-    fun delete(id:Char) = mapper.delete(id)
-    fun deleteAll() = mapper.deleteAll()
+    fun delete(id:String):Boolean{
+        val model= mapper.getTodoById(id)
+        return if(model.statusId==3 || model.statusId==4){//状態が取りやめor完了
+            mapper.delete(id)
+            true
+        }else false
+    }
 }

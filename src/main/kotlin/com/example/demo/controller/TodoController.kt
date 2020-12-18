@@ -1,13 +1,13 @@
 package com.example.demo.controller
 
-import com.example.demo.controller.dto.TodoGetDetailRequest
+import com.example.demo.controller.dto.TodoDeleteRequest
+import com.example.demo.controller.dto.TodoGetTodolRequest
 import com.example.demo.controller.dto.TodoInsertRequest
 import com.example.demo.controller.dto.TodoUpdateRequest
 import com.example.demo.model.TodoListModel
 import com.example.demo.model.TodoModel
 import com.example.demo.service.TodoService
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 //@Controller
 @RestController
@@ -16,49 +16,39 @@ class TodoController(
     private var todoService: TodoService
     ) {
 
-    @GetMapping("/find")
+    @GetMapping("/find")//詳細一覧確認用
     fun find(): List<TodoModel>  {
         println("GET_TODO_LIST")
-//        val modelList = sampleService.find()
         return todoService.find()
     }
 
-    @PostMapping("/insert")
+    @PostMapping("/insert")//登録API
     fun insertData(@RequestBody body:TodoInsertRequest): Boolean {
         println("INSERT")
         return todoService.insert(body.title, body.category, body.detail, body.deadline, body.remarks)
     }
 
-    @PostMapping("/getTodo")
-    fun getTodo(@RequestBody body:TodoGetDetailRequest):TodoModel{
+    @GetMapping("/getTodo")//詳細取得API
+    fun getTodo(@RequestBody body:TodoGetTodolRequest):TodoModel{
         println("GET_TODO")
         return todoService.getTodoById(body.id)
     }
 
-    @GetMapping("/getTodoList")
+    @GetMapping("/getTodoList")//一覧取得API
     fun getTodoList(): List<TodoListModel>  {
         println("GET_TODO_LIST")
-//        val modelList = sampleService.find()
         return todoService.getTodoList()
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update")//更新API
     fun updateData(@RequestBody body:TodoUpdateRequest) : Boolean {
         println("UPDATE")
         return todoService.update(body.id, body.status)
     }
 
-    @DeleteMapping("/delete/{id}")
-    fun deleteData(@PathVariable id:Char): List<TodoModel> {
-        println("WWW4")
-//        TodoService.delete(id)
-        return todoService.find()
-    }
-
-    @DeleteMapping("/delete/all")
-    fun deleteAllData(): List<TodoModel> {
-        println("WWW5")
-//        TodoService.deleteAll()
-        return todoService.find()
+    @DeleteMapping("/delete")//削除API
+    fun deleteData(@RequestBody body:TodoDeleteRequest): Boolean{
+        println("DELETE")
+        return todoService.delete(body.id)
     }
 }

@@ -16,12 +16,8 @@ interface TodoMapper {
     fun getTodoById(id:String): TodoModel
     fun insert(id:String, title:String, categoryId:Int, detail:String, statusId:Int, deadline: Date, remarks:String): String
     fun getTodoList(): List<TodoListModel>
-
     fun update(id:String, statusId: Int)
-
-
-    fun delete(id:Char)
-    fun deleteAll()
+    fun delete(id:String)
 
     //todo_category
     fun getCategoryIdByCategory(category: String):Int
