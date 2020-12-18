@@ -2,6 +2,7 @@ package com.example.demo.controller
 
 import com.example.demo.controller.dto.TodoGetDetailRequest
 import com.example.demo.controller.dto.TodoInsertRequest
+import com.example.demo.controller.dto.TodoUpdateRequest
 import com.example.demo.model.TodoListModel
 import com.example.demo.model.TodoModel
 import com.example.demo.service.TodoService
@@ -41,13 +42,10 @@ class TodoController(
         return todoService.getTodoList()
     }
 
-
-
-    @PutMapping("/update/{id}/{hello_world}")
-    fun updateData(@PathVariable("id") id:Char,@PathVariable("title") title:String) : List<TodoModel> {
-        println("www3")
-//        TodoService.update(id, hello_world)
-        return todoService.find()
+    @PutMapping("/update")
+    fun updateData(@RequestBody body:TodoUpdateRequest) : Boolean {
+        println("UPDATE")
+        return todoService.update(body.id, body.status)
     }
 
     @DeleteMapping("/delete/{id}")

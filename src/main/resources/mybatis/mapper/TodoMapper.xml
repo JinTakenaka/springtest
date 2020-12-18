@@ -42,10 +42,15 @@
         UPDATE
             todo
         SET
-            title=#{title}
+            status_id=#{statusId},
+            updated_at=CURRENT_TIMESTAMP
         WHERE
             id=#{id}
     </select>
+
+
+
+
 
     <select id="delete">
         DELETE

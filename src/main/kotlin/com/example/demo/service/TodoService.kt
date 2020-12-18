@@ -25,10 +25,20 @@ class TodoService(private val mapper: TodoMapper) {
     fun getTodoById(id:String):TodoModel{
         return mapper.getTodoById(id)
     }
-
     fun getTodoList():List<TodoListModel> = mapper.getTodoList()
 
-    fun update(id:Char, hello_world:String) = mapper.update(id, hello_world)
+    fun update(id:String, status:String):Boolean{
+        val model= mapper.getTodoById(id)
+        when(model.statusId) {
+            1 -> if (status != "in_progress" && status != "cancelled") return false//未実施→実施中、取りやめ
+            2 -> if (status != "completed" && status != "cancelled") return false//実施中→完了、取りやめ
+            3 -> return false//取りやめ→なし
+            4 -> return false//完了→なし
+        }
+        mapper.update(id, mapper.getStatusIdByStatus(status))
+        return true
+    }
+
     fun delete(id:Char) = mapper.delete(id)
     fun deleteAll() = mapper.deleteAll()
 }
