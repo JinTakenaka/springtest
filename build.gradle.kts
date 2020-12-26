@@ -34,11 +34,29 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+	//open-csv
+//	implementation("com.opencsv:opencsv:5.2")
+
+	//H2
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
+
+	//junit4
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	//junit5
 	testImplementation("org.springframework.boot:spring-boot-starter-test"){
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
-	//testImplementation("org.junit.jupiter:junit-jupiter-api")
-	//testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+	//dbunit
+	testImplementation("com.github.springtestdbunit:spring-test-dbunit:1.3.0")
+	testImplementation("org.dbunit:dbunit:2.7.0")
+	//DbSetup-kotlin
+	testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")//jreだとエラーで動かない
+	testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.4.10")
 }
 
 tasks.withType<Test> {

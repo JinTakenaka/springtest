@@ -6,8 +6,7 @@
 
     <select id="find" resultType="TodoModel">
         SELECT
-            id,
-            title
+            *
         FROM
             todo
     </select>
