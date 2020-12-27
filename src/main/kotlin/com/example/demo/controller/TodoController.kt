@@ -25,7 +25,8 @@ class TodoController(
     @PostMapping("/insert")//登録API
     fun insertData(@RequestBody body:TodoInsertRequest): Boolean {
         println("INSERT")
-        return todoService.insert(body.title, body.category, body.detail, body.deadline, body.remarks)
+        var id = todoService.insert(body.title, body.category, body.detail, body.deadline, body.remarks)
+        return id=="false"
     }
 
     @GetMapping("/getTodo")//詳細取得API
