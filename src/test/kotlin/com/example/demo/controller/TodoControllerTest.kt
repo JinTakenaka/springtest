@@ -140,7 +140,7 @@ class TodoControllerTest() {
     fun deleteDataTest(){
         println("deleteDataTest")
         val beforeNum = service.find().size
-        var actual = service.getTodoById(todoListTest[3].id)
+        service.delete(todoListTest[3].id)
         val afterNum = service.find().size
         assertThat(afterNum).isEqualTo(beforeNum-1)
     }
