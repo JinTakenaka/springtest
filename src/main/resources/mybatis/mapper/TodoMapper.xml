@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.infrastructure.mapper.TodoMapper">
+
+    <select id="find" resultType="TodoModel">
+        SELECT
+            id,
+            title
+        FROM
+            todo
+    </select>
+
+    <select id="getTodoById" resultType="TodoModel">
+        SELECT
+            *
+        FROM
+            todo
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="insert" resultType="String">
+        INSERT IGNORE INTO
+            todo (id, title, category_id, detail, status_id, deadline, remarks)
+        VALUES (
+            #{id}, #{title}, #{categoryId}, #{detail}, #{statusId}, #{deadline}, #{remarks}
+        )
+    </select>
+
+    <select id="update">
+        UPDATE
+            todo
+        SET
+            title=#{title}
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="delete">
+        DELETE
+        FROM
+            todo
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="deleteAll">
+        DELETE
+        FROM
+            todo
+    </select>
+
+    <select id="getCategoryIdByCategory" resultType="Int">
+        SELECT
+            category_id
+        FROM
+            todo_category
+        WHERE
+            category=#{category}
+    </select>
+
+    <select id="getStatusIdByStatus" resultType="Int">
+        SELECT
+            status_id
+        FROM
+            todo_status
+        WHERE
+            status=#{status}
+    </select>
+
+</mapper>
